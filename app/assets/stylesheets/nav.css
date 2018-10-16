@@ -1,0 +1,43 @@
+.list{
+    width: auto;
+    margin-left: auto;
+    font-weight: bold;
+    padding: 5px 0;
+    color: white;
+}
+
+.list:checked{
+    color:white;
+}
+
+.list ul{
+    width: 80%;
+
+}
+
+.list li{
+    list-style-type: none;
+    float: left;
+    font-size: 30px;
+    padding: 1px 30px;
+}
+
+.list a{
+    text-decoration: none;
+}
+
+
+
+@media screen and ( max-width:900px )
+{
+    .list ul{
+        width: 100%;  
+    }
+    
+    
+    .list li{
+        font-size: 15px;
+        padding: 1px 10px;
+    }
+    
+}

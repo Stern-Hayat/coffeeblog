@@ -1,0 +1,30 @@
+
+<h2>'観光'カテゴリの検索結果</h2>  
+
+<% @travel.each do |travel| %>
+   
+  
+    <% if travel.id % 3 == 0 %>
+      
+       <div class="sp">
+          <p>スポンサーリンク</p>
+          <%= image_tag("sp_test01.png")%>
+       </div>
+          
+        
+    <% end %>  
+      
+       <div class="items">
+           <div class="item">
+              
+              <%= image_tag("travel.png")%>
+               <span class="datetime"><i class="far fa-clock"></i><%= travel.created_at %></span>
+               
+               <h1><%= link_to("#{travel.title}","/coffeeblog/#{travel.id}")%> </h1>
+               <p><%= travel.content.truncate(200) %></p>
+           </div>
+        </div>
+    
+<% end %>
+
+<%= will_paginate @travel %>

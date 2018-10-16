@@ -1,0 +1,31 @@
+<% @page_title = '最先端テクノロジー' %>
+
+<h2>'テクノロジー'カテゴリの検索結果</h2>  
+
+<% @tech.each do |tech| %>
+   
+  
+    <% if tech.id % 3 == 0 %>
+      
+       <div class="sp">
+          <p>スポンサーリンク</p>
+          <%= image_tag("sp_test01.png")%>
+       </div>
+          
+        
+    <% end %>  
+      
+       <div class="items">
+           <div class="item">
+              
+              <%= image_tag("technology.png")%>
+               <span class="datetime"><i class="far fa-clock"></i><%= tech.created_at %></span>
+               
+               <h1><%= link_to("#{tech.title}","/coffeeblog/#{tech.id}")%> </h1>
+               <p><%= tech.content.truncate(200) %></p>
+           </div>
+        </div>
+    
+<% end %>
+
+<%= will_paginate @tech %>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= page_title %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    	
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="share.css" rel="stylesheet" type="text/css">
+    <link href="nav.css" rel="stylesheet" type="text/css">
+    <link href="list.css" rel="stylesheet" type="text/css">
+    <link href="index.css" rel="stylesheet" type="text/css">
+    
+    
+  </head>
+
+  <body>
+   
+    <header>
+        <h1><i class="fas fa-coffee"></i> コーヒーブログ</h1>
+        <h2>３分で読める「美味しい」記事をあなたに</h2>
+    </header>
+    <div class="menu">
+        <ul class="list">
+          <li><%= link_to("TECHNOLOGY","/coffeeblog/tech")%></li>
+          <li><%= link_to("SUB-CULTURE","/coffeeblog/tanime")%></li>
+          <li><%= link_to("MUSIC","/coffeeblog/tmusic")%></li>
+          <li><%= link_to("TRAVEL","/coffeeblog/travel")%></li>
+          <li><%= link_to("TOPIC","/coffeeblog/topic")%></li>
+         </ul>
+    </div>
+    
+    <div class="bread">
+       <i class="fas fa-home"></i> <%= link_to("HOMEに戻る","index")%>
+       
+    </div>
+  
+
+<div class="content">    
+      
+    <%= yield %>
+    
+         
+</div>    
+    
+    
+　<div class="side">
+      <h3>この記事を書いた人</h3>
+      
+        <%= image_tag("coffee.png", :class => "me")%>
+      
+      
+      
+      <h2>コーヒー</h2>
+      <p>関西の大学に通う大学生。大学初のプログラミングサークルの創立者で元部長。現在は京都と大阪で学生にプログラミングを教えるプログラミング講師として活躍中。20歳。新規事業を始めるために月収50万円を目指しています。趣味は音楽全般と旅行です。 □お問い合わせ：@Ql5Go (Twitter)</p>
+   </div>
+
+   <div class="side">
+       <h3>ランダムで記事をご紹介！</h3>
+       
+    <% @random.each do |random| %>
+     
+       <div class="rec">
+           <% if random.categoryy == 'テクノロジー' %>
+                   <%= image_tag("technology.png")%>
+               <% elsif random.categoryy == '音楽' %>
+                   <%= image_tag("music.png")%>
+               <% elsif random.categoryy == '話題' %>
+                   <%= image_tag("topic.png")%>
+               <% elsif random.categoryy == '観光' %>
+                   <%= image_tag("travel.png")%>
+               <% else random.categoryy == 'サブカルチャー' %>
+                   <%= image_tag("subcul.png")%>
+               <% end %>
+           <h4><%= link_to("#{random.title}","/coffeeblog/#{random.id}")%> </h4>
+       </div>
+    <% end %>     
+    
+   </div>
+   
+   <div class="side">
+       <%= image_tag("sp_test02.png")%>
+   </div>
+   
+   <div class="side">
+       <h3>カテゴリ別の記事</h3>
+       
+        <ul>
+          <li><%= link_to("テクノロジー","tech")%></li>
+          <li><%= link_to("サブカル","tanime")%></li>
+          <li><%= link_to("音楽","tmusic")%></li>
+          <li><%= link_to("観光","travel")%></li>
+          <li><%= link_to("話題","topic")%></li>
+        </ul>
+   </div>
+   
+   
+   <div class="side">
+       <%= image_tag("ad03.jpeg")%>
+   </div>
+
+   
+    <div class="side">
+       <h3>最新の記事</h3>
+       
+    <% @new.each do |articles| %>
+     
+       <div class="rec">
+           <% if articles.categoryy == 'テクノロジー' %>
+                   <%= image_tag("technology.png")%>
+               <% elsif articles.categoryy == '音楽' %>
+                   <%= image_tag("music.png")%>
+               <% elsif articles.categoryy == '話題' %>
+                   <%= image_tag("topic.png")%>
+               <% elsif articles.categoryy == '観光' %>
+                   <%= image_tag("travel.png")%>
+               <% else articles.categoryy == 'サブカルチャー' %>
+                   <%= image_tag("subcul.png")%>
+               <% end %>
+           <h4><%= link_to("#{articles.title}","/coffeeblog/#{articles.id}")%> </h4>
+       </div>
+    <% end %>     
+    
+    
+   </div>
+   
+   <div class="footer">
+       @ 2018 コーヒーブログ, All Rights are reservred.
+   </div>
+   
+  </body>
+</html>

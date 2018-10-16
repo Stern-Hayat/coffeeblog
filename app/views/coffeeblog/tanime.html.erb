@@ -1,0 +1,30 @@
+
+<h2>'サブカル'カテゴリの検索結果</h2>  
+
+<% @tanime.each do |anime| %>
+   
+  
+    <% if anime.id % 3 == 0 %>
+      
+       <div class="sp">
+          <p>スポンサーリンク</p>
+          <%= image_tag("sp_test01.png")%>
+       </div>
+          
+        
+    <% end %>  
+      
+       <div class="items">
+           <div class="item">
+              
+              <%= image_tag("subcul.png")%>
+               <span class="datetime"><i class="far fa-clock"></i><%= anime.created_at %></span>
+               
+               <h1><%= link_to("#{anime.title}","/coffeeblog/#{anime.id}")%> </h1>
+               <p><%= anime.content.truncate(200) %></p>
+           </div>
+        </div>
+    
+<% end %>
+
+<%= will_paginate @tanime %>

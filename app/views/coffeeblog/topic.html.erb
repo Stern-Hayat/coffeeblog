@@ -1,0 +1,30 @@
+
+<h2>'話題'カテゴリの検索結果</h2>  
+
+<% @topic.each do |topic| %>
+   
+  
+    <% if topic.id % 3 == 0 %>
+      
+       <div class="sp">
+          <p>スポンサーリンク</p>
+          <%= image_tag("sp_test01.png")%>
+       </div>
+          
+        
+    <% end %>  
+      
+       <div class="items">
+           <div class="item">
+              
+              <%= image_tag("topic.png")%>
+               <span class="datetime"><i class="far fa-clock"></i><%= topic.created_at %></span>
+               
+               <h1><%= link_to("#{topic.title}","/coffeeblog/#{topic.id}")%> </h1>
+               <p><%= topic.content.truncate(200) %></p>
+           </div>
+        </div>
+    
+<% end %>
+
+<%= will_paginate @topic %>

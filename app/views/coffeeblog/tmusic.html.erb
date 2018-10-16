@@ -1,0 +1,30 @@
+
+<h2>'音楽'カテゴリの検索結果</h2>  
+
+<% @tmusic.each do |music| %>
+   
+  
+    <% if music.id % 3 == 0 %>
+      
+       <div class="sp">
+          <p>スポンサーリンク</p>
+          <%= image_tag("sp_test01.png")%>
+       </div>
+          
+        
+    <% end %>  
+      
+       <div class="items">
+           <div class="item">
+              
+              <%= image_tag("music.png")%>
+               <span class="datetime"><i class="far fa-clock"></i><%= music.created_at %></span>
+               
+               <h1><%= link_to("#{music.title}","/coffeeblog/#{music.id}")%> </h1>
+               <p><%= music.content.truncate(200) %></p>
+           </div>
+        </div>
+    
+<% end %>
+
+<%= will_paginate @tmusic %>

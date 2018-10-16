@@ -1,0 +1,17 @@
+.list{
+    margin-left: 20%;
+    font-weight: bold;
+    padding: 5px 0 ;
+}
+
+.list ul{
+    width: 60%;
+
+}
+
+.list li{
+    list-style-type: none;
+    float: left;
+    font-size: 30px;
+    padding: 1px 30px;
+}

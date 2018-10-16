@@ -1,0 +1,45 @@
+      
+<% @article.each do |articles| %>
+   
+  
+    <% if articles.id % 3 == 0 %>
+      
+       <div class="sp">
+          <p>スポンサーリンク</p>
+          <%= image_tag("sp_test01.png")%>
+       </div>
+          
+        
+    <% end %>  
+      
+       <div class="items">
+           <div class="item">
+            
+               <% if articles.categoryy == 'テクノロジー' %>
+                   <%= image_tag("technology.png")%>
+               <% elsif articles.categoryy == '音楽' %>
+                   <%= image_tag("music.png")%>
+               <% elsif articles.categoryy == '話題' %>
+                   <%= image_tag("topic.png")%>
+               <% elsif articles.categoryy == '観光' %>
+                   <%= image_tag("travel.png")%>
+               <% else articles.categoryy == 'サブカルチャー' %>
+                   <%= image_tag("subcul.png")%>
+               <% end %>
+               
+               <span class="datetime"><i class="far fa-clock"></i><%= articles.created_at %></span>
+               
+               <h1><%= link_to("#{articles.title}","/coffeeblog/#{articles.id}")%> </h1>
+               <p><%= articles.content.truncate(200) %></p>
+           </div>
+        </div>
+    
+<% end %>
+
+<%= will_paginate @article %>
+      
+
+
+
+                         
+                                                       
